@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "data.h"
-#include "handleCommand.c"
 
 int main()
 {
