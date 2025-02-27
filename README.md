@@ -1,4 +1,7 @@
 # maman-14
+line length: 80
+label length: 31
+
 
 i need to write a program in c that reads a text file that contains instructions. each line can be an empty line or contain a command. the program should go through each line and identify the command and it's parameters. it then checks to see if the command is a legit command.
 each command should have the following structure: 
