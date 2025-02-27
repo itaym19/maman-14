@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "data.h"
-#include
+#include "handleCommand.c"
 
 int main()
 {
