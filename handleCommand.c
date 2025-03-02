@@ -10,3 +10,11 @@ char *trim_white_spaces(char *s) {
     
     return s;
 }
+
+/* function for identifying command name and parameters */
+void identify_command(char *line, command *command) {
+    int i=0, j=0;
+    while(!isspace(line[i])) {
+        i++
+    }
+}
