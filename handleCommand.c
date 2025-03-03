@@ -15,7 +15,14 @@ char *trim_white_spaces(char *s) {
 void identify_command(char *line, command *command) {
     int i=0, j=0;
     bool isLastCharComma = false;
-    while(!isspace(line[i])) {
+    /* go through first word */
+    while(!isspace(*line[i])) { 
         i++
+    }
+    /* copy first word to command's name */
+    for(j = 0; j < i; j++) {
+        if (j <= MAX_COMMAND_LENGTH) {
+            (command -> commandName[j]) = *line[j];
+        }
     }
 }
