@@ -25,4 +25,8 @@ void identify_command(char *line, command *command) {
             (command -> commandName[j]) = *line[j];
         }
     }
+    /* go to start of second word */
+    while (isspace(*line[i])) i++;
+    
+    
 }
