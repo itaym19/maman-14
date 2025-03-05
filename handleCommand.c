@@ -16,7 +16,7 @@ bool identify_command(char *line, command *command) {
     int i=0, j=0;
     bool isLastCharComma = false;
     /* go through first word */
-    while(!isspace(*line[i])) { 
+    while ( (!isspace(*line[i]) ) && (*line[i] != '\0' ) { 
         i++
     }
     /* copy first word to command's name */
@@ -24,6 +24,7 @@ bool identify_command(char *line, command *command) {
         if (j <= MAX_COMMAND_LENGTH) {
             (command -> commandName[j]) = *line[j];
         }
+        (command -> commandName[j+1]) = '\0';
     }
     /* go to start of second word */
     while (isspace(*line[i])) {
@@ -35,11 +36,17 @@ bool identify_command(char *line, command *command) {
         fprintf(stderr, "error: there is a comma before first parameter");
         return false;
     }
-    else { 
-        while (*line)
+    /* go through second word */
+    while ( (!isspace(*line[i] && (*line[i] != ',') && (*line[i] != '\0' ) ) {
+        i++;
     }
-    
-    
+    /* copy second word to first parameter */
+    for( ; j < i; j++) {
+        if (j <= MAX_LABEL_LENGTH) {
+            (command -> commandName[j]) = *line[j];
+        }
+        (command -> commandName[j+1]) = '\0';
+    }
     
 }
     
