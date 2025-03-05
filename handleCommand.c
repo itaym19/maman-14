@@ -12,7 +12,7 @@ char *trim_white_spaces(char *s) {
 }
 
 /* function for identifying command name and parameters */
-void identify_command(char *line, command *command) {
+bool identify_command(char *line, command *command) {
     int i=0, j=0;
     bool isLastCharComma = false;
     /* go through first word */
@@ -26,7 +26,23 @@ void identify_command(char *line, command *command) {
         }
     }
     /* go to start of second word */
-    while (isspace(*line[i])) i++;
+    while (isspace(*line[i])) {
+        i++;
+        j++;
+    }
+    
+    if (*line[i] == ",") {
+        fprintf(stderr, "error: there is a comma before first parameter");
+        return false;
+    }
+    else { 
+        while (*line)
+    }
+    
     
     
 }
+    
+    
+    
+
