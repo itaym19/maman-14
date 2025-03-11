@@ -10,3 +10,4 @@ it will then store the command name and parameters in a "Command" structure / ob
 commands can have between 0 and 2 parameters.
 if the command line is wrong there should be an error that specifies the issue for example:
 wrong command name, not enough parameters, too many parameters, no comma between parameters, two many commas between parameters and so on.
+max line's length is 80, max command name's length is 4, max parameter's length is 31
