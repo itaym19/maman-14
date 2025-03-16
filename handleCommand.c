@@ -14,7 +14,12 @@ char *trim_white_spaces(char *s) {
 /* function for identifying command name and parameters */
 bool identify_command(char *line, command *command) {
     int i=0, j=0;
-    bool isLastCharComma = false;
+    
+    if (strstr(line, ",,") {
+        fprintf(stderr, "error: there cannot be multiple commas in the command");
+        return false;
+    }
+    
     /* go through first word */
     while ( (!isspace(line[i]) ) && (line[i] != '\0' ) { 
         i++
@@ -56,13 +61,17 @@ bool identify_command(char *line, command *command) {
     /* advance j to reach i */
     for (j<i; j++);
     
-    if (line[i] == "\n") return true;
+    if (line[i] == '\n') return true;
+    
     /* skip optional spaces between parameters */
-    while ( (isspace(line[i])) && (line[i] != '\n') ) {
+    while ( (isspace(line[i])) && (line[i] != '\n') && (line[i] != '\0') ) {
         i++;
         j++;
     }
     
+    if (line[i] == '\n') return true;
+    
+    if (line[i] == '\n') return true;
     
 }
     
