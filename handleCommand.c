@@ -11,6 +11,32 @@ char *trim_white_spaces(char *s) {
     return s;
 }
 
+char *remove_all_spaces(char * str) {
+   imt i=0 ,j = 0;
+   /* Check if the input string is NULL */
+    if (str == NULL) {
+        return NULL;
+    }
+     /* Allocate memory for the new string, assuming the worst case where no spaces are removed */
+    int len = strlen(str);
+    char *result = (char *)malloc(len + 1); /* +1 for the null terminator */
+    if (result == NULL) {
+        return NULL;  /* Memory allocation failed */
+    }
+
+    int j = 0;  /* Index for the result string */
+    for (int i = 0; i < len; i++) {
+        /* If the current character is not a white space, copy it to the result */
+        if (!isspace(str[i])) {
+            result[j++] = str[i];
+        }
+    }
+    /* Null-terminate the new string */
+    result[j] = '\0';
+
+    return result;
+}
+
 /* function for identifying command name and parameters */
 bool identify_command(char *line, command *command) {
     int i=0, j=0;
