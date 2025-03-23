@@ -9,4 +9,5 @@ typedef struct {
 } command;
 
 char *trim_white_spaces(char *);
+char *remove_all_spaces(char *);
 void identify_command(char *, command *);
