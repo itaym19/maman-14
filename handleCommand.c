@@ -37,8 +37,16 @@ char *remove_all_spaces(char * str) {
     return result;
 }
 
-/* function for identifying command name and parameters */
-bool identify_parameters(char *str, command * command) {
+/* function for identifying parameters */
+bool identify_parameters(const char *input, command *cmd) {
+    int paramCount = 0;
+    char *token;
+    /* Temporary buffer to hold input as we split it */
+    char buffer[MAX_LINE_LENGTH + 1];
+    strcpy(buffer, input);
+    /* Split the string by comma */
+    token = strtok(buffer, ",");
+    
     /* first char of parameter string is comma */
     if (*char == ',') {
         fprintf(stderr, "error: there cannot be a comma before first parameter");
@@ -49,11 +57,32 @@ bool identify_parameters(char *str, command * command) {
         fprintf(stderr, "error: there cannot be a comma after last parameter");
         return false;
     }
-    
+    /* 2 consecutive commas between parameters */
     if (strstr(str, ",,") != NULL) {
         fprintf(stderr, "error: there cannot be 2 consecutive commas between parameters");
         return false;
     }
+
+    /* Store the  and parameters */
+    while (token != NULL) {
+        if (paramCount == 0) {
+            /* store token in first parameter */
+            strncpy(cmd->firstParam, token, MAX_LABEL_LENGTH + 1);
+            cmd->firstParam[MAX_LABEL_LENGTH + 1] = '\0';
+        } else if (paramCount == 1) {
+            /* store token in second parameter */
+            strncpy(cmd->secondParam, token, MAX_LABEL_LENGTH + 1);
+            cmd->secondParam[MAX_LABEL_LENGTH + 1] = '\0';
+        } else {  /* If there are more than 2 parameters, return an error */
+            fprintf(stderr, "too many parameters");
+            return false;
+        }
+        /* Get the next token */
+        token = strtok(NULL, ",");
+        paramCount++;
+    }
+
+    return true;  
 }
 
 /* function for identifying command name and parameters */
