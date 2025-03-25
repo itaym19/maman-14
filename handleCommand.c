@@ -38,6 +38,25 @@ char *remove_all_spaces(char * str) {
 }
 
 /* function for identifying command name and parameters */
+bool identify_parameters(char *str, command * command) {
+    /* first char of parameter string is comma */
+    if (*char == ',') {
+        fprintf(stderr, "error: there cannot be a comma before first parameter");
+        return false;
+    }
+    /* last char of parameter string is comma */
+    if (cha[strlen(str)-1] == ',') {
+        fprintf(stderr, "error: there cannot be a comma after last parameter");
+        return false;
+    }
+    
+    if (strstr(str, ",,") != NULL) {
+        fprintf(stderr, "error: there cannot be 2 consecutive commas between parameters");
+        return false;
+    }
+}
+
+/* function for identifying command name and parameters */
 bool identify_command(char *line, command *command) {
     int i=0, j=0;
     
