@@ -10,4 +10,5 @@ typedef struct {
 
 char *trim_white_spaces(char *);
 char *remove_all_spaces(char *);
+bool identify_parameters(const char *input, command *cmd);
 void identify_command(char *, command *);
