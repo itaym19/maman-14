@@ -47,22 +47,22 @@ bool identify_parameters(const char *input, command *cmd) {
     token = strtok(buffer, ",");
     
     /* first char of parameter string is comma */
-    if (*char == ',') {
+    if (*input == ',') {
         fprintf(stderr, "error: there cannot be a comma before first parameter");
         return false;
     }
     /* last char of parameter string is comma */
-    if (cha[strlen(str)-1] == ',') {
+    if (input[strlen(input)-1] == ',') {
         fprintf(stderr, "error: there cannot be a comma after last parameter");
         return false;
     }
     /* 2 consecutive commas between parameters */
-    if (strstr(str, ",,") != NULL) {
+    if (strstr(input, ",,") != NULL) {
         fprintf(stderr, "error: there cannot be 2 consecutive commas between parameters");
         return false;
     }
 
-    /* Store the  and parameters */
+    /* Store the parameters */
     while (token != NULL) {
         if (paramCount == 0) {
             /* store token in first parameter */
