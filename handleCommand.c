@@ -12,7 +12,7 @@ char *trim_white_spaces(char *s) {
 }
 
 char *remove_all_spaces(char * str) {
-   imt i=0 ,j = 0;
+   int i=0 ,j = 0;  /* j - Index for the result string */
    /* Check if the input string is NULL */
     if (str == NULL) {
         return NULL;
@@ -24,7 +24,6 @@ char *remove_all_spaces(char * str) {
         return NULL;  /* Memory allocation failed */
     }
 
-    int j = 0;  /* Index for the result string */
     for (int i = 0; i < len; i++) {
         /* If the current character is not a white space, copy it to the result */
         if (!isspace(str[i])) {
