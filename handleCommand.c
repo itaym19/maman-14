@@ -87,9 +87,9 @@ bool identify_parameters(const char *input, command *cmd) {
 /* function for identifying command name and parameters */
 bool identify_command(char *line, command *command) {
     int i=0, j=0;
+    char *line = trim_white_spaces(command); /* trim leading / trailing spaces  */
     char *commandName = (char *)malloc( (strlen(line) * sizeof(char)) + 1);  /* cammand name string */
     char *commandParameters = (char *)malloc( (strlen(line) * sizeof(char)) + 1);  /* parameters string */
-    line = trim_white_spaces(command); /* trim leading / trailing spaces  */
     
     /* copy command name to commandCopy */
     while (!isspace(line[i])) i++;
