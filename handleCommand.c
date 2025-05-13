@@ -87,7 +87,24 @@ bool identify_parameters(const char *input, command *cmd) {
 /* function for identifying command name and parameters */
 bool identify_command(char *line, command *command) {
     int i=0, j=0;
+    char *commandName = (char *)malloc( (strlen(line) * sizeof(char)) + 1);  /* cammand name string */
+    char *commandParameters = (char *)malloc( (strlen(line) * sizeof(char)) + 1);  /* parameters string */
+    line = trim_white_spaces(command); /* trim leading / trailing spaces  */
     
+    /* copy command name to commandCopy */
+    while (!isspace(line[i])) i++;
+    commandName = strncpy(commandName, line, i);
+    commandName[i+1] = '\0';
+    /* copy parameters to parametersCopy */
+    while (isspace(line[i])) i++;
+    if (line[i] != '\0') {
+        commandParameters = strncpy(commandParameters, line[i], strlen(line) - i);
+        commandParameters[strlen(line) - i + 1] = '\0';
+    }
+    
+    strcpy(command -> commandName, commandName, MAX_COMMAND_LENGTH + 1 );    
+    
+
     if (strstr(line, ",,") {
         fprintf(stderr, "error: there cannot be multiple commas in the command");
         return false;
